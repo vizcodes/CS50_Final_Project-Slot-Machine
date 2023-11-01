@@ -1,5 +1,5 @@
 # CS50 Final Project-Slot Royale 🎰
-### Video Demo: 
+### Video Demo: [App Demo](https://youtu.be/C4Rz36tr4Q0?si=C_xCeVa8s86wsMSu)
 
 ### Description:
 - This is a slot machine simulator that allows the user to play a virtual slot machine game with virtual cash. The user can choose the amount to bet, spin the reels, and win or lose cash based on the outcome. The game also features a jackpot prize that is randomly awarded when the user gets three same emojis. 
