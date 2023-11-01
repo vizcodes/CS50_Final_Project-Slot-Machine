@@ -9,3 +9,5 @@
 - The simulator is written in HTML, CSS, JS, Python & SQL and uses the Flask library as the backend. The game is inspired by the classic slot machines found in casinos and arcades.
 
 - The simulator also contains a special admin login to view the dashboard for admins to monitor the monetary performance of slot machines.
+
+![image](https://i.ibb.co/qxC28gc/image.png)
