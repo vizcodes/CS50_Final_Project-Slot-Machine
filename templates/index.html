@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<script src="/static/slot_machine.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.0/dist/confetti.browser.min.js"></script>
+{% endblock %}
+{% block title %}
+Machine
+{% endblock %}
+
+{% block main %}
+<div class = "d-flex flex-row-reverse bd-highlight pt-5 px-5">
+    <div class = "p-2 bd-highlight"><h6>Cash left: $ {{ cash }}</h6></div>
+</div>
+<div class = "container-fluid pt-5 mt-5 text-center">
+    <span style = "font-family: Young Serif, sans-serif; color:black;">
+        <h1 class = "display-2">💰 Jackpot! 💰</h1>
+    </span>
+</div>
+<div class = "container text-center my-5 py-2 w-25 ">
+    <div class="row">
+        <div class="col border border-4 border-dark py-2 "  style="width: 50px; height: 100px; background: #f6f7b6;">
+           <p class = "display-4 text-center" id = 'box1'>{{ fin_lst[0] }}</p> 
+        </div>
+        <div class="col border border-4 border-dark py-2 "  style="width: 50px; height: 100px; background: #f6f7b6;">
+            <p class = "display-4" id = 'box2'>{{ fin_lst[1] }}</p> 
+        </div>
+        <div class="col border  border-4 border-dark py-2 " style="width: 50px; height: 100px; background: #f6f7b6;">
+            <p class = "display-4" id = 'box3'>{{ fin_lst[2] }}</p> 
+        </div>
+    </div>
+    <div class="container text-center my-5 pt-2">
+        <form action="/" method = 'post'>
+            <div class="mb-4">
+                <!-- <input autocomplete="off" autofocus class="form-control mx-auto w-auto" 
+                id="betamt" name="betamt" placeholder="Betting amount ($)" type="number" > -->
+                <label for="myRange" class="form-label"><b>Betting Amt ($): $<span id="demo"></span></b></label>
+                <input type="range" class="form-range" min="5" max="50" step="5" id="myRange" name = 'bet_amt'>
+            </div>
+            <button id="spin"><span>SPIN!</span></button>
+        </form>
+        <audio id = "audio2" controls = 'false' preload = "auto">
+            <source src = '/static/pop.mp3' type = "audio/mpeg">
+        </audio>
+        <audio id = "audio3" controls = 'false' preload = "auto">
+            <source src = '/static/reel.mp3' type = "audio/mpeg">
+        </audio>
+    </div>
+    <div class = 'mb-3 pt-2'>
+        <p class = 'display-4' style = 'color:red;'><b>{{ message }}</b></p>
+    </div>
+    <div class = 'container-fluid pt-2 mt-3'>
+        {% if win_amt > 0 %}
+        <p class = 'display-6' style = 'color:green; font-family: Young Serif, sans-serif;'>You won: $ {{ win_amt }}</p>
+        {% elif win_amt == 0 %}
+        <p class = 'display-6' style = 'color:black; font-family: Young Serif, sans-serif;'></p>
+        {% else %}
+        <p class = 'display-6' style = 'color:red; font-family: Young Serif, sans-serif;'>You lost: $ {{ win_amt }}</p>
+        {% endif %}
+
+
+    </div>
+    <hr></hr>
+    <div class = "container-fluid pt-5 mt-3 text-center">
+        <span style = "font-family: Young Serif, sans-serif; color:black;">
+            <h1 class = "display-5">Bet RuleBook</h1>
+        </span>
+    </div>
+    <div class = 'mb-3 pt-5'>
+        <p style = 'color:green;'>Each spin costs you $1 and the number of 💀 you get you lose n/3 rd of your bet.</p>
+        <p style = 'color:green;'>No betting money is lost in each spin unless you get a 💀</p>
+    </div>
+    <div class="container-fluid text-left ps-5 py-5 mt-5">
+        <div class = 'row'>
+            <div class = "col text-left">
+                <p class = "display-4">🔥 🔥 🔥</p>
+            </div>
+            <div class = "col text-left pt-3">
+                <p class = "display-6" style = "font-family: Young Serif, sans-serif; color:black;">50 x Bet</p>
+            </div>
+        </div>
+        <div class = 'row pt-5'>
+            <div class = "col text-left">
+                <p class = "display-4">💲 💲 💲</p>
+            </div>
+            <div class = "col text-left pt-3">
+                <p class = "display-6" style = "font-family: Young Serif, sans-serif; color:black;">10 x Bet</p>
+            </div>
+        </div>
+        <div class = 'row pt-5'>
+            <div class = "col text-left">
+                <p class = "display-4">🍒 🍒 🍒</p>
+            </div>
+            <div class = "col text-left pt-3">
+                <p class = "display-6" style = "font-family: Young Serif, sans-serif; color:black;">5 x Bet</p>
+            </div>
+        </div>
+        <div class = 'row pt-5'>
+            <div class = "col text-left">
+                <p class = "display-4">🍎 🍎 🍎</p>
+            </div>
+            <div class = "col text-left pt-3">
+                <p class = "display-6" style = "font-family: Young Serif, sans-serif; color:black;">2 x Bet</p>
+            </div>
+        </div>
+        <div class = 'row pt-5'>
+            <div class = "col text-left">
+                <p class = "display-4">🍌 </p>
+            </div>
+            <div class = "col text-left pt-3">
+                <p class = "display-6" style = "font-family: Young Serif, sans-serif; color:black;">+ Bet/9</p>
+            </div>
+        </div>
+        <div class = 'row pt-5'>
+            <div class = "col text-left">
+                <p class = "display-4">🍎</p>
+            </div>
+            <div class = "col text-left pt-3">
+                <p class = "display-6" style = "font-family: Young Serif, sans-serif; color:black;">$ 1</p>
+            </div>
+        </div>
+        <div class = 'row pt-5'>
+            <div class = "col text-left">
+                <p class = "display-4">💀</p>
+            </div>
+            <div class = "col text-left pt-3">
+                <p class = "display-6" style = "font-family: Young Serif, sans-serif; color:black;">- Bet/3</p>
+            </div>
+        </div>
+    </div>
+    <div class = 'mb-3 pt-5'>
+        <p style = 'color:red;'> <b>Please Note : </b>This website is for educational purposes only and does not involve any real money or prizes. 
+            Gambling can be addictive and harmful. Please play responsibly. </p>
+    </div>
+    
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+Add money
+
+{% endblock %}
+
+{% block main %}
+<div class = "container-fluid text-center mt-5 pt-5">
+    <form action="/money_confirm" method="get">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="money" name="money" 
+            placeholder="In Dollars ($)" type="number">
+        </div>
+        <div class = "mt-4 pt-2 pb-5">
+            <button class="btn btn-primary" type="submit">Add Cash!</button>
+        </div>
+        <div class = 'mb-3 pt-5'>
+            <p style = 'color:red;'>{{ message }}</p>
+        </div>
+</div>
+
+{% endblock %}

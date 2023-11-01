@@ -1,0 +1,44 @@
+#spin { 
+  border-radius: 50%; 
+  width: 100px;
+  height: 100px;
+  border: none;
+  color: white;
+  font-family: Young Serif, sans-serif;
+  font-weight: 900;
+  font-size: 1.0rem;
+  background: red;
+  text-shadow: 0 3px 1px rgba(122,17,8,.8);
+  box-shadow: 0 8px 0 rgb(183,9,0), 
+    0 15px 20px rgba(0,0,0,.35);
+  text-transform: uppercase;
+  transition: .4s all ease-in;
+  outline: none; 
+  cursor: pointer;
+  text-align: center;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.pressed { 
+  padding-top: 3px;
+  transform: translateY(15px);
+  box-shadow: 0 4px 0 rgb(183,0,0),
+    0 8px 6px rgba(0,0,0,.45);
+}
+
+#audio {
+  display: none;
+}
+
+#audio2{
+  display: none;
+}
+
+#audio3{
+  display: none;
+}
+
+.filter {
+  filter: blur(1.5px);
+}

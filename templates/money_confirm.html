@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block head %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var playsoundbutton = document.getElementById('chaching');
+        var audio = document.getElementById('audio');
+        function playsound() {
+            audio.play();
+        }
+        playsoundbutton.addEventListener('click', function() {
+            var ogAnswerValue = parseFloat(document.getElementById('og_answer').value);
+            var answerValue = parseFloat(document.getElementById('answer').value);
+        
+            if (answerValue === ogAnswerValue) {
+                playsound();
+            };
+        });
+    });
+</script>
+
+{% endblock %}
+{%  block title  %}
+confirmation
+{% endblock %}
+
+{% block main %}
+<div class = "container mt-5 pt-5 text-center">
+    <h2>Solve the equation to add $ {{ cash }}</h2> 
+    <span class = "mt-5 pt-4">
+        <hr></hr>
+        <h3>{{ equation }}</h3>
+    </span>
+    <form action="/money_confirm" method="post">
+        <div class="mb-3 pt-4">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="answer" name="answer" 
+            placeholder="Answer" type="number">           
+            <input type="hidden" name="money"  value="{{ cash }}">
+            <input type="hidden" name="og_answer" id = 'og_answer' value="{{ og_answer }}">
+            <input type="hidden" name="eqn" value="{{ equation }}">
+        </div>
+        <div class = "mt-2 pt-2 pb-5">
+            <button class="btn btn-primary" type="submit" id = 'chaching'>Add money</button>
+            <audio id = "audio" controls = 'false' preload = "auto">
+                <source src = '/static/cash-win.wav' type = "audio/mpeg">
+            </audio>
+        </div>
+        <div class = 'mb-3 pt-5'>
+            <p style = 'color:red;'>{{ message }}</p>
+        </div>
+</div>
+
+{% endblock %}
+
