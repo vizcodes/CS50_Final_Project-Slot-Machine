@@ -21,7 +21,7 @@
 
 ### How to play?
 
--In order to play Slot Royale, you need to register an account with your username and password. You will start with a balance of 0 virtual cash. You can then add money to your account by using the add money tab. once you enter the amount you will be asked to solve an equation which, if solved successfully the cash will be added to your account. Each slot reel has different symbols and payouts. You can also see the jackpot amount for each patten on the below the slot machine.
+-vIn order to play Slot Royale, you need to register an account with your username and password. You will start with a balance of 0 virtual cash. You can then add money to your account by using the add money tab. once you enter the amount you will be asked to solve an equation which, if solved successfully the cash will be added to your account. Each slot reel has different symbols and payouts. You can also see the jackpot amount for each patten on the below the slot machine.
 
 - To place a bet, you need to enter an amount between 5 and 50 in the input slider below the slot reel. Then, you can click on the spin button to start spinning the reels. You will hear a sound effect when the reels stop. If you get a winning combination on the payline, you will see a message showing how much you won and your balance will increase accordingly. If you get three same emojis on the payline, you will win the jackpot prize. If you lose, your balance will decrease by the amount of your bet.
 
