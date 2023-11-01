@@ -38,6 +38,8 @@ def after_request(response):
 def index():
     if request.method == 'GET':
         user_data = db.execute("SELECT * FROM users where user_id =  ?",session['user_id'])
+        if user_data[0]['user_name'] == 'admin':
+            return redirect('/dashboard')
         cash = user_data[0]['cash']
         fin_lst = ['❓','❓','❓']
         return render_template('index.html',cash = round(cash,2),fin_lst = fin_lst, win_amt = 0)
